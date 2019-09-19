@@ -1,3 +1,10 @@
+#Configs and Node files
+config
+node_modules
+
+#Temporary files
+*.*~
+
 # Logs
 logs
 *.log
