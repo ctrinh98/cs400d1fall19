@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+// import { CONTACTS} from './CONTACTS-MOCK';
+import {CONTACT} from './models/contactModel';
+import { ContactServiceAsyncService} from './services/contact-service-async.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  title = 'CS400 HTTPClient demo';
+  private selectedContact: CONTACT = null;
+  contacts: CONTACT[] = []
+  test = 'foo';
+
+  getContacts(): void {
+    this.contactService.getContacts()
+      .subscribe(contacts => {
+        this.contacts = contacts;
+        console.log(`Contacts: ${this.contacts}`)
+      });
+  }
+
+
+  displayContactDetail(contact: CONTACT) {
+    this.selectedContact = contact;
+  }
+
+  constructor(private contactService: ContactServiceAsyncService) {
+
+  }
+  ngOnInit() {
+    this.getContacts();
+  }
+}
