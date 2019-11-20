@@ -1,0 +1,44 @@
+- Reactive forms vs template forms
+
+- important note...since reactive forms rely on an ngModel to connect the form and its underlying data,
+it is much easier to test since the form can be tested without rendering the page
+
+- build a simple reactive form for just a name
+
+1. import reactiveformsmodule in app.module
+2. build a new component to encapsulate the form (note that webstorm prompts to import ReactiveFormsModule)
+
+- There's a valueChanges observable to watch for frm element changes, OR just use the .value property on the formControl
+
+3. Create inpput field/s
+
+- You can call (for example) this.name.setValue('Maggie') to set val of a field
+
+-----------
+FORM GROUPS
+
+If you have several fields (basically more than one), it's simple to create a form group....it has slightly different syntax
+
+
+
+- If we are using form validation, here's a way to disable the 'submit' button until everything is valid:
+<button type="submit" [disabled]="!formGroupName.valid">Submit</button>
+
+
+-----------
+FORM VALIDATION
+For reactive forms, there are BUILT IN validators for common use cases
+- first, import Validators in the component (NB build a new componet for this that duplicates prior)
+
+Making something required:
+add Validators.required to field definition (in form group)
+
+NB you can use the .status value on the form group to display (or test) the form's state
+{{groupName.status}}
+
+We can add as many validators as necessary in the FormControl constructor (it's the second param...pass in an array if more than one)
+
+Once we have validators defined, we can access things such as name.errors, which has methods matching each validator
+ie *ngIf="name.errors.required" or *ngIf="name.errors.customFunction"
+
+DON"T FORGET to mention .ng-valid, ng-pristine, ng-dirty, ng-touched, etc

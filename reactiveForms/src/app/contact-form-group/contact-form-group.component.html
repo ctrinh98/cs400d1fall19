@@ -1,0 +1,15 @@
+<form [formGroup]="contactFormGroup" (ngSubmit)="onSubmit()">
+
+  <label>Name:
+  <input type="text" formControlName="name" >
+  </label>
+  <label>Dept:
+    <input type="text" formControlName="department">
+  </label>
+  <label>UID:
+    <input type="text" formControlName="UID">
+  </label>
+  <button type="submit" [disabled]="!contactFormGroup.valid">Submit</button>
+
+
+</form>

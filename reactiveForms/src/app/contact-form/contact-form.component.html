@@ -1,0 +1,19 @@
+<label>Name
+  <input type="text" [formControl]="name"><br/>
+  <input type="text" [formControl]="city"><br/>
+
+
+  <button type="submit" (click)="submitName()" [disabled]="!name.valid ">Submit</button>
+
+</label>
+<br/>
+Input: {{name.value}}
+
+
+<!--<input type="text" [(ngModel)]="aName">-->
+<!--<input type="text" [(ngModel)]="aAddress">-->
+<!--<input type="text" [(ngModel)]="aPhone">-->
+<!--<button type="submit" (click)="submitName()" >Submit</button>-->
+
+
+<!--{{hobby}}-->
